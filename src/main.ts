@@ -15,6 +15,10 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(process.env.PORT || 3000);
+  // Nullish coalescing operator
+  // Para puertos, es mejor usar ?? porque:
+  //   El puerto 0 es un valor válido (el sistema asigna un puerto disponible automáticamente)
+  //   Solo quieres usar el valor por defecto (3000) cuando realmente no hay configuración (undefined/null)
+  await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
